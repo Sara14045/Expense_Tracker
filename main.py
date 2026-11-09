@@ -1,4 +1,5 @@
 from expenses import add, show  # Get the expense functions.
+from files import save, load  # Get the JSON functions.
 
 # Show the menu and keep the expense list.
 def main():  # Start the main function.
@@ -17,10 +18,16 @@ def main():  # Start the main function.
             add(data)  # Add an expense.
         elif ch == "2":  # Check for printing.
             show(data)  # Print the expenses.
+        elif ch == "4":  # Check for saving.
+            save(data)  # Save expenses as JSON.
+        elif ch == "5":  # Check for opening.
+            new = load()  # Read an expense file.
+            if new is not None:  # Check that opening worked.
+                data = new  # Replace the current list.
         elif ch == "7":  # Check for exit.
-            print("Goodbye! Expenses are not saved yet.")  # Explain that data is temporary.
+            print("Goodbye! Only saved expenses are kept.")  # Remind the user about saving.
             break  # Stop the loop.
-        elif ch in ["3", "4", "5", "6"]:  # Check unfinished choices.
+        elif ch in ["3", "6"]:  # Check unfinished choices.
             print("Coming soon.")  # Mark features to add later.
         else:  # Handle an invalid choice.
             print("Please choose 1 to 7.")  # Ask for a valid choice.
