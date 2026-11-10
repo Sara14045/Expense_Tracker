@@ -42,3 +42,34 @@ def show(data):  # Receive the expense list.
         print(f"{e['date']} | {e['category']} | {e['amount']:.2f} | {e['note']}")  # Print one expense.
         total = total + e["amount"]  # Add its amount to the total.
     print(f"Total: {total:.2f}")  # Print the total.
+
+# Print expenses matching dates, a category, or both.
+def find(data):  # Receive the expense list.
+    s = input("Start date (YYYY-MM-DD, blank for any): ").strip()  # Read the start date.
+    t = input("End date (YYYY-MM-DD, blank for any): ").strip()  # Read the end date.
+    c = input("Category (blank for all): ").strip().lower()  # Read the category.
+    try:  # Try checking the dates.
+        for d in [s, t]:  # Check both dates.
+            if d:  # Skip a blank date.
+                x = datetime.strptime(d, "%Y-%m-%d")  # Check the calendar date.
+                if x.strftime("%Y-%m-%d") != d:  # Check the date format.
+                    raise ValueError  # Reject the wrong format.
+    except ValueError:  # Catch an invalid date.
+        print("Enter valid dates as YYYY-MM-DD.")  # Explain the problem.
+        return  # Stop filtering.
+    if s and t and s > t:  # Check the date order.
+        print("Start date cannot be after end date.")  # Explain the problem.
+        return  # Stop filtering.
+    rows = []  # Make a list for matches.
+    for e in data:  # Visit each expense.
+        if s and e["date"] < s:  # Check the start date.
+            continue  # Skip an earlier expense.
+        if t and e["date"] > t:  # Check the end date.
+            continue  # Skip a later expense.
+        if c and e["category"].lower() != c:  # Check the category.
+            continue  # Skip a different category.
+        rows.append(e)  # Keep the matching expense.
+    if not rows:  # Check for no matches.
+        print("No matching expenses.")  # Show an empty result.
+        return  # Stop printing.
+    show(rows)  # Print matches and their total.
