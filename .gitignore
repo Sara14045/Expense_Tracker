@@ -1,0 +1,19 @@
+# Python temporary files
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+
+# Personal expense data
+*.json
+*.csv
+
+# Editor settings
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
