@@ -1,5 +1,5 @@
 from expenses import add, show, find  # Get the expense functions.
-from files import save, load  # Get the JSON functions.
+from files import save, load, export  # Get the file functions.
 
 # Show the menu and keep the expense list.
 def main():  # Start the main function.
@@ -26,11 +26,11 @@ def main():  # Start the main function.
             new = load()  # Read an expense file.
             if new is not None:  # Check that opening worked.
                 data = new  # Replace the current list.
+        elif ch == "6":  # Check for exporting.
+            export(data)  # Write all expenses to CSV.
         elif ch == "7":  # Check for exit.
             print("Goodbye! Only saved expenses are kept.")  # Remind the user about saving.
             break  # Stop the loop.
-        elif ch == "6":  # Check the unfinished choice.
-            print("Coming soon.")  # Mark features to add later.
         else:  # Handle an invalid choice.
             print("Please choose 1 to 7.")  # Ask for a valid choice.
 

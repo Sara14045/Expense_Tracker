@@ -1,4 +1,5 @@
 import json  # Get JSON tools.
+import csv  # Get CSV tools.
 import math  # Get number checking.
 from datetime import datetime  # Get date checking.
 
@@ -45,3 +46,16 @@ def load():  # Start the open function.
     except (OSError, ValueError, UnicodeError, OverflowError):  # Catch file and data errors.
         print("Could not open a valid expense file.")  # Explain the problem.
         return None  # Keep the current list unchanged.
+
+# Export all current expenses to a CSV file for Excel.
+def export(data):  # Receive the expense list.
+    name = input("CSV file name (example: expenses.csv): ").strip()  # Read the file name.
+    try:  # Try writing the CSV file.
+        with open(name, "w", newline="", encoding="utf-8-sig") as f:  # Open the file for Excel.
+            w = csv.writer(f)  # Make a CSV writer.
+            w.writerow(["Date", "Category", "Amount", "Note"])  # Write column headings.
+            for e in data:  # Visit each expense.
+                w.writerow([e["date"], e["category"], f"{e['amount']:.2f}", e["note"]])  # Write one expense.
+        print("CSV exported.")  # Confirm the export.
+    except OSError:  # Catch a file error.
+        print("Could not export that file.")  # Explain the problem.

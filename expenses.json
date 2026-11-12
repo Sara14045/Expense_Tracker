@@ -1,1 +1,44 @@
-[]
+[
+    {
+        "date": "2026-09-06",
+        "category": "College Fee",
+        "amount": 1000.0,
+        "note": "College Fee"
+    },
+    {
+        "date": "2026-09-18",
+        "category": "Medical",
+        "amount": 500.0,
+        "note": "Admitted to hospital"
+    },
+    {
+        "date": "2026-10-05",
+        "category": "Birthday",
+        "amount": 2000.0,
+        "note": "Birthday Party"
+    },
+    {
+        "date": "2026-10-25",
+        "category": "Food",
+        "amount": 1500.0,
+        "note": "Daily Grocery"
+    },
+    {
+        "date": "2026-10-16",
+        "category": "College Fee",
+        "amount": 1000.0,
+        "note": "College Fee"
+    },
+    {
+        "date": "2026-11-02",
+        "category": "Birthday",
+        "amount": 200.0,
+        "note": "Contribution"
+    },
+    {
+        "date": "2026-11-11",
+        "category": "Vacations",
+        "amount": 3500.0,
+        "note": "Bali trip"
+    }
+]
